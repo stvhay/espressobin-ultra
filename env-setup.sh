@@ -24,7 +24,7 @@ export CROSS_CM3=arm-linux-gnueabi-
 export WTP=${a3700_utils}
 export MV_DDR_PATH=${mvddr}
 export CRYPTOPP_PATH=${cryptopp}
-export WTMI_IMG=${mox}/wtmi_app.bin
+#export WTMI_IMG=${mox}/wtmi_app.bin
 export FIP_ALIGN=0x100
 
 export PRJNAME=espressobin_ultra
@@ -186,9 +186,9 @@ function build_atf {
     local bootdev=$3
 
     # build wtmi.app
-    make -C ${mox} \
-        CROSS_CM3=${CROSS_CM3} \
-        clean wtmi_app.bin
+    #make -C ${mox} \
+    #    CROSS_CM3=${CROSS_CM3} \
+    #    clean wtmi_app.bin
 
     # clean a3700-utils image to prevent using old ddr image
     make -C $a3700_utils \
@@ -218,7 +218,7 @@ function build_atf {
     make -C $atf distclean
 
     if [ $bootdev != "emmc" ]; then
-        make -C $atf \
+        make -j4 -C $atf \
             CROSS_COMPILE=${CROSS_COMPILE}		\
             CROSS_CM3=${CROSS_CM3}			\
             USE_COHERENT_MEM=0				\
@@ -229,19 +229,19 @@ function build_atf {
             WTP=${WTP}					\
             CRYPTOPP_PATH=${CRYPTOPP_PATH}		\
             BL33=${BL33}				\
-            WTMI_IMG=${WTMI_IMG}			\
             FIP_ALIGN=${FIP_ALIGN}			\
             DEBUG=0					\
             LOG_LEVEL=20				\
-            clean mrvl_flash mrvl_uart
+            fiptool all fip mrvl_flash mrvl_uart
         # spi-flash boot
+
         FLASHOUT=${BUILDOUT}/${PRJNAME}-bootloader-${cpustr}-${ddrstr}-atf-${ATFGITID}-uboot-g${UBOOTGITID}-utils-${WTPGITID}-${DATESTR}.bin
 
         # uartboot
         UARTIMG=${BUILDOUT}/${PRJNAME}-uartboot-${cpustr}-${ddrstr}-atf-${ATFGITID}-uboot-${UBOOTGITID}-utils-${WTPGITID}-${DATESTR}.tgz
         cp $atf/build/a3700/release/uart-images.tgz.bin ${UARTIMG}
     else
-        make -C $atf \
+        make -j4 -C $atf \
             CROSS_COMPILE=${CROSS_COMPILE}		\
             CROSS_CM3=${CROSS_CM3}			\
             USE_COHERENT_MEM=0				\
@@ -252,13 +252,12 @@ function build_atf {
             WTP=${WTP}					\
             CRYPTOPP_PATH=${CRYPTOPP_PATH}		\
             BL33=${BL33}				\
-            WTMI_IMG=${WTMI_IMG}			\
             FIP_ALIGN=${FIP_ALIGN}			\
             DEBUG=0					\
             LOG_LEVEL=20				\
             BOOTDEV=EMMCNORM 				\
             PARTNUM=1 					\
-            clean mrvl_flash
+            fiptool all fip mrvl_flash
         # emmc boot
         FLASHOUT=${BUILDOUT}/${PRJNAME}-emmcloader-${cpustr}-${ddrstr}-atf-${ATFGITID}-uboot-g${UBOOTGITID}-utils-${WTPGITID}-${DATESTR}.bin
     fi
