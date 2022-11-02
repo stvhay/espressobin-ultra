@@ -18,7 +18,7 @@
 	url = https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 [submodule "u-boot"]
 	path = u-boot
-	url = https://source.denx.de/u-boot/u-boot.git
+	url = git@github.com:stvhay/u-boot.git
 [submodule "stable"]
 	path = linux
-	url = https://gitlab.com/linux-kernel/stable.git
+	url = git@github.com:stvhay/linux.git
