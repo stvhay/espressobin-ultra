@@ -332,7 +332,7 @@ function build_kernel {
         fi
     fi
 
-    #make -C $kernel gti_ccpe-88f3720_defconfig
+    make -C $kernel gti_espressobin-ultra_defconfig
     make -C $kernel -j4
     make -C $kernel modules_install INSTALL_MOD_PATH=${BUILDOUT}
 
