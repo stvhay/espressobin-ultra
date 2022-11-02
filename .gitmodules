@@ -1,0 +1,24 @@
+[submodule "A3700-utils-marvell"]
+	path = A3700-utils-marvell
+	url = https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git
+[submodule "cryptopp"]
+	path = cryptopp
+	url = https://github.com/weidai11/cryptopp.git
+[submodule "mox-boot-builder"]
+	path = mox-boot-builder
+	url = https://gitlab.nic.cz/turris/mox-boot-builder.git
+[submodule "mox-imager"]
+	path = mox-imager
+	url = https://gitlab.nic.cz/turris/mox-imager.git
+[submodule "mv-ddr-marvell"]
+	path = mv-ddr-marvell
+	url = https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git
+[submodule "trusted-firmware-a"]
+	path = trusted-firmware-a
+	url = https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+[submodule "u-boot"]
+	path = u-boot
+	url = https://source.denx.de/u-boot/u-boot.git
+[submodule "stable"]
+	path = linux
+	url = https://gitlab.com/linux-kernel/stable.git
