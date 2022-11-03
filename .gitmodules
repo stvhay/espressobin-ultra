@@ -15,7 +15,7 @@
 	url = https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git
 [submodule "trusted-firmware-a"]
 	path = trusted-firmware-a
-	url = https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+	url = git@github.com:stvhay/trusted-firmware-a.git
 [submodule "u-boot"]
 	path = u-boot
 	url = git@github.com:stvhay/u-boot.git
