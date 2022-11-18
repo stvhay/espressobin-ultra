@@ -277,10 +277,7 @@ function build_bootloader {
     OUTPUTMSG=""
 
     # build cellular-cpe
-    build_uboot gti_espressobin-ultra_defconfig armada-3720-espressobin-ultra flash
-
-    # build axc300 hw.v3
-    #build_uboot gti_axc300-88f3720_defconfig armada-3720-axc300-v3 flash
+    build_uboot mvebu_espressobin-ultra-88f3720_defconfig armada-3720-espressobin-ultra flash
 
     if [ ! -f ${BL33} ]; then
         echo "Failed to build u-boot!"
@@ -299,10 +296,7 @@ function build_bootloader {
     # for emmcloader
 
     # build cellular-cpe
-    build_uboot gti_espressobin-ultra_defconfig armada-3720-espressobin-ultra emmc
-
-    # build axc300 hw.v3
-    #build_uboot gti_axc300-88f3720_defconfig armada-3720-axc300-v3 emmc
+    build_uboot mvebu_espressobin-ultra-88f3720_defconfig armada-3720-espressobin-ultra emmc
 
     if [ ! -f ${BL33} ]; then
         echo "Failed to build u-boot!"
